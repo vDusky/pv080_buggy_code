@@ -2,6 +2,8 @@ import sys
 import os
 import yaml
 import flask
+import random
+import string
 
 app = flask.Flask(__name__)
 
@@ -44,7 +46,8 @@ def load_yaml(filename):
     
 def authenticate(password):
     # Assert that the password is correct
-    assert password == "Iloveyou", "Invalid password!"
+    res = ''.join(random.choices(string.ascii_letters, k=random.randint(5, 50)))
+    assert password == res, "Invalid password!"
     print("Successfully authenticated!")
 
 if __name__ == '__main__':
